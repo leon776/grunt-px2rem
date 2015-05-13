@@ -37,17 +37,17 @@ module.exports = function(grunt) {
 			    border      : 1,//1不处理border，0处理
 			    ie8         : 1,//1生成ie8代码，0不生成
 			    mode        : 0,
-			    dest        : 'assets/css/'//rem css输出目录
+			    dest        : 'test/assets/css/'//rem css输出目录
 		    },
 	      files: [{
-		      src : ['assets/css/*.css']//要监听的css目录
+		      src : ['test/assets/css/*.css']//要监听的css目录
 	      }]
       }
     },
 
     watch: {
 	    css: {
-				files: ['assets/css/*.css', 'tasks/px2rem.js'],
+				files: ['test/assets/css/*.css', 'tasks/px2rem.js'],
 				tasks: ['px2rem']
 			}
     },

@@ -11,7 +11,7 @@ default: {
     border      : 1,//1不处理border，0处理
     ie8         : 1,//1生成ie8代码，0不生成
     dest        : 'assets/css/'//rem css输出目录
-    mode        : 0/0:px转rem，1rem转px
+    mode        : 0//0:px转rem，1rem转px
   },
   files: [{
     src : ['assets/css/*.css']//要监听的css目录

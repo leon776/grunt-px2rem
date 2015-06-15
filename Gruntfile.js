@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      tests: ['test/assets/css/*-rem.css']
     },
 
     // Configuration to be run (and then tested).
@@ -34,9 +34,10 @@ module.exports = function(grunt) {
 		    options: {
 			    designWidth : 640,//设计稿宽度
 			    baseFont    : 20,//基础字体
-			    border      : 1,//1不处理border，0处理
-			    ie8         : 1,//1生成ie8代码，0不生成
+			    border      : 0,//1不处理border，0处理
+			    ie8         : 0,//1生成ie8代码，0不生成
 			    mode        : 0,
+			    media       : 0,//1生成meadia query代码，0不生成
 			    dest        : 'test/assets/css/'//rem css输出目录
 		    },
 	      files: [{
@@ -54,7 +55,7 @@ module.exports = function(grunt) {
 
     // Unit tests.
 		nodeunit: {
-      tests: ['test/*_test.js']
+      tests: ['test/test*.js']
     }
 
   });
@@ -70,11 +71,13 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'px2rem'/*, 'nodeunit'*/]);
+  grunt.registerTask('test', ['clean', 'px2rem', 'nodeunit']);
+
 
   // By default, lint and run all tests.
 
 	grunt.registerTask('default', ['px2rem', 'watch']);
+	grunt.registerTask('p2r', 'px2rem');
 
 	grunt.event.on('watch', function(action, filepath, target) {
 		grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

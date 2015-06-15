@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* reset */
+body,div,p,ul,li,table,tbody,tr,td,textarea,form,input,h1,h2,h3,h4,h5,dl,dt,dd,img,iframe,header,nav,section,article,footer,figure,figcaption,menu{margin:0;padding:0;font-size:14px;list-style:none;}
+body{font-family:"\5FAE\8F6F\96C5\9ED1",Helvetica;-webkit-user-select:none;-webkit-text-size-adjust:none;line-height:24px;}
+a{text-decoration:none;color:#ea3700;}
+header,nav,section,article,footer,figure,figcaption{display:block;}
+ol,ul {margin:0;padding:0;}
+fieldset {border:none;margin:0;padding:0;}
+img {display:block;}
+
+/*config一些基本公用的样式*/
+.fl {float:left;}
+.fr {float:right;}
+.clear {clear:both;}
+.clearfix:after {content: ".";display: block;height: 0;clear:both;visibility: hidden;}
+.hidden {display:none;}
+.center {width: 93.125%;margin: 0 auto;}
+
+/*layout*/
+body {background-color: #8bb310;padding-bottom: 27px;}
+.mod-header {padding-top:63.90625%;background:url(../img/banner.png) no-repeat center center;background-size: 100% 100%;-webkit-background-size:100% 100%;}
+.mod-content {overflow: hidden;margin-top: -10px;}
+.mod-content-tab {font-size: 0;position: relative;height:45px;}
+.mod-content-tab-item {position:absolute;bottom:0;height: 0;border-style: solid;border-width: 0 26px 43px 26px;border-color: transparent transparent #6a3315 transparent;}
+.mod-content-tab-item.tab-left	{left: 0;width:120px;}
+.mod-content-tab-item.tab-right {right: 0;width:102px;}
+.mod-content-tab-item div {position:absolute;top:2px;left:-25px;text-align:center;line-height: 40px;height: 0;border-style: solid;border-width: 0 26px 41px 26px;border-color: transparent transparent #50240c transparent;font-size: 15px;color:#be7b56;transition:all linear .3s;}
+.mod-content-tab-item.active {border-width: 0 26px 45px 26px;}
+.mod-content-tab-item.active div {border-color: transparent transparent #9d5e3b transparent;z-index: 1;font-size: 18px;color:#fff;border-width: 0 26px 45px 26px;}
+.mod-content-tab-item.tab-left div {width: 118px;}
+.mod-content-tab-item.tab-right div {width: 100px;}
+
+.mod-content-main {background-color: #9d5e3b;border:2px solid #6a3315;padding:10px 6px;margin-top: -1px;border-bottom-left-radius:5px;border-bottom-right-radius: 5px;}
+.mod-game {background-color:#fce2b8;border:1px solid #6a3315;border-radius: 5px;margin-top:10px;}
+.mod-game:first-child {margin-top: 0;}
+.mod-game-header {padding: 10px;position: relative;}
+.mod-game-line {border-top:1px solid #e2c18b;}
+.mod-game-info {padding: 10px;}
+
+.mod-game-img {width:64px;height: 64px; display: inline-block;margin-right:10px;vertical-align: middle;}
+.mod-game-title {display: inline-block;width:110px;vertical-align: middle;}
+.mod-game-title-main {font-size: 16px;color: #6A3315;}
+.mod-game-title-sub {font-size: 12px;color: #9d5e3b;line-height: 1.2;}
+.mod-game-download {width: 60px;height: 30px;background-color: #894926;color:#fff;font-size: 14px;text-align: center;line-height: 30px;position: absolute;right: 10px;top:50%;transform: translate(0,-50%);border-radius: 3px;}
+
+.mod-game-activity-title {font-size: 14px;color: #6a3315;}
+.mod-game-detail {display:inline-block;width:60px;height: 20px;line-height: 20px;text-align: center;background-color:#f1d4a4;font-size: 12px;color: #6a3315;border-radius: 10px;}
+.mod-game-activity-info {font-size: 12px;color: #9d5e3b;}
+
+.mod-game-award {padding: 10px;}
+.mod-game-award-list {font-size: 0;text-align: adjust;display: -webkit-flex;-webkit-justify-content:space-between;margin-top: 8px;}
+.mod-game-award-item {display: inline-block;width:50px;}
+.mod-game-award-img {width: 50px;height: 50px;}
+.mod-game-award-info {font-size: 12px;color:#9d5e3b;text-align: center;white-space: nowrap;}
+
+.huge-btn {height: 40px;line-height: 40px;background-color:#fce2b8;margin-top:10px;border:1px solid #6a3315;border-radius: 5px;font-size: 14px;text-align: center;}
+
+.mod-share {background-color:#9d5e3b;border: 2px solid #783221;color: #fff;-webkit-box-sizing:border-box;box-sizing:border-box;}
+

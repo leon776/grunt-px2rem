@@ -30,7 +30,7 @@ var RemTransform = function(option) {
 		var reg = new RegExp("[0-9]+([.]{1}[0-9]+){0,1}","g"), rem = px;
 		var tmp = px.match(reg);
 		for (var i = 0; i < tmp.length; i++) {
-			if(Number(tmp[i]) === 0 || px.substr( px.indexOf( tmp[i] ) + tmp[i].length, 2 ) !== 'px') {
+			if(Number(tmp[i]) === 0 || px.indexOf( tmp[i] + 'px' ) < 0) {
 				continue;//0不做处理,数字后面不是px不做处理
 			}
 			rem = rem.replace(tmp[i] + 'px', (Number(tmp[i]) / baseFont) + 'rem');
@@ -83,7 +83,12 @@ var RemTransform = function(option) {
 			after += _getRem(pxArray[i], baseFont);
 			before = before.replace(tmp[0], '').replace(pxArray[i], '');
 		}
-		return _createMedia() + after + before;
+		if(option.media) {
+			return _createMedia() + after + before;
+		} else {
+			return after + before;
+		}
+
 	}
 	//rem转px
 	function changeToPx (input) {
@@ -105,34 +110,34 @@ var RemTransform = function(option) {
 
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+	// Please see the Grunt documentation for more information regarding task
+	// creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('px2rem', function() {
-	  var options = this.options({});
-	  var rem = new RemTransform(options);
-	  //console.log(JSON.stringify(this.files));
-	  grunt.file.defaultEncoding = 'utf8';
-	  this.files.forEach(function(file) {
+	grunt.registerMultiTask('px2rem', function() {
+		var options = this.options({});
+		var rem = new RemTransform(options);
+		//console.log(JSON.stringify(this.files));
+		grunt.file.defaultEncoding = 'utf8';
+		this.files.forEach(function(file) {
 
-		  file.src.forEach(function(src) {
-			  var input = '', output = '', filepath = options.dest;
-			  if(src.indexOf('-rem') > 0) {
-				  return false;
-			  }
-			  if (!grunt.file.exists(src)) {
-				  grunt.log.warn('Source file "' + src + '" not found.');
-				  return false;
-			  }
+			file.src.forEach(function(src) {
+				var input = '', output = '', filepath = options.dest;
+				if(src.indexOf('-rem') > 0) {
+					return false;
+				}
+				if (!grunt.file.exists(src)) {
+					grunt.log.warn('Source file "' + src + '" not found.');
+					return false;
+				}
 				input = grunt.file.read(src);
-			  if(!options.mode) {
-				  output = rem.px2rem(input);
-			  } else{
-				  output = rem.rem2px(input);
-			  }
-			  filepath += path.basename(src, '.css') + '-rem.css';
-			  grunt.file.write(filepath, output);
-		  });
-	  });
-  });
+				if(!options.mode) {
+					output = rem.px2rem(input);
+				} else{
+					output = rem.rem2px(input);
+				}
+				filepath += path.basename(src, '.css') + '-rem.css';
+				grunt.file.write(filepath, output);
+			});
+		});
+	});
 };

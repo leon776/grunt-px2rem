@@ -1,0 +1,7 @@
+.test{width: 0.25rem;height: 0.1rem;}
+.test-shorthand{padding:1rem 0.5rem 1.5rem 1rem;}
+.test-border{border:0.05rem solid #fff;border-radius:0.25rem;}
+.test-other-unit{width:100%;padding:0.05rem 1rem 0.05rem 1%;}
+.test-single-line{width: 0.25rem;height: 0.1rem;}.test-single-line{padding:1rem 0.5rem 1.5rem 1rem;}
+.test-no-semicolon{width:0.05rem;
+}

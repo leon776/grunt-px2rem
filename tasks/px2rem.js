@@ -51,12 +51,15 @@ var RemTransform = function(option) {
 		return str.replace(/px[^;{}]?}/g,'px;\n}');
 	}
 	function _filterBorder(str) {
+		console.log(str)
+		console.log('=================')
 		if(str.substr(-6) === 'border'
 			|| str.substr(-12) === 'border-width'
 			|| str.substr(-10) === 'border-top'
 			|| str.substr(-11) === 'border-left'
 			|| str.substr(-12) === 'border-right'
 			|| str.substr(-13) === 'border-bottom'
+			|| str.substr(-13) === 'border-radius'
 		) {
 			return true;
 		}
@@ -65,11 +68,10 @@ var RemTransform = function(option) {
 	//将px转换成rem
 	function changeToRem (input) {
 		var after = '', tmp = [],
-			reg = new RegExp(":[^:]*px\.*;","g"),
+			reg = new RegExp(":[^:]*px([^;])*;","g"),
 			before = _addSemicolon(input);
 		var pxArray = before.match(reg);
 		if(!pxArray) { return; }
-
 		for (var i = 0; i < pxArray.length; i++) {
 			tmp = before.split(pxArray[i]);
 			if(option.border && _filterBorder(tmp[0])) {
@@ -88,7 +90,6 @@ var RemTransform = function(option) {
 		} else {
 			return after + before;
 		}
-
 	}
 	//rem转px
 	function changeToPx (input) {

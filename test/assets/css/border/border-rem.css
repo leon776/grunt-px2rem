@@ -4,3 +4,5 @@
 .test{border-left:1px solid #fff;}
 .test{border-right:1px solid #fff;}
 .test{border-width:1px;}
+.test-other-with-noborder{width:0.5rem;border:1px;height:0.75rem;border-radius: 25px;margin:0.05rem;
+}

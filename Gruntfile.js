@@ -36,14 +36,69 @@ module.exports = function(grunt) {
 			    baseFont    : 20,//基础字体
 			    border      : 0,//1不处理border，0处理
 			    ie8         : 0,//1生成ie8代码，0不生成
-			    mode        : 0,
+			    mode        : 0,//0px转rem，1rem转px
 			    media       : 0,//1生成meadia query代码，0不生成
-			    dest        : 'test/assets/css/'//rem css输出目录
+			    dest        : 'test/assets/css/base/'//rem css输出目录
 		    },
 	      files: [{
-		      src : ['test/assets/css/*.css']//要监听的css目录
+		      src : ['test/assets/css/base/*.css']//要监听的css目录
 	      }]
-      }
+      },
+	    border: {
+		    options: {
+			    designWidth : 640,//设计稿宽度
+			    baseFont    : 20,//基础字体
+			    border      : 1,//1不处理border，0处理
+			    ie8         : 0,//1生成ie8代码，0不生成
+			    mode        : 0,
+			    media       : 0,//1生成meadia query代码，0不生成
+			    dest        : 'test/assets/css/border/'//rem css输出目录
+		    },
+		    files: [{
+			    src : ['test/assets/css/border/*.css']//要监听的css目录
+		    }]
+	    },
+	    ie8: {
+		    options: {
+			    designWidth : 640,//设计稿宽度
+			    baseFont    : 20,//基础字体
+			    border      : 0,//1不处理border，0处理
+			    ie8         : 1,//1生成ie8代码，0不生成
+			    mode        : 0,
+			    media       : 0,//1生成meadia query代码，0不生成
+			    dest        : 'test/assets/css/ie8/'//rem css输出目录
+		    },
+		    files: [{
+			    src : ['test/assets/css/ie8/*.css']//要监听的css目录
+		    }]
+	    },
+	    media: {
+		    options: {
+			    designWidth : 640,//设计稿宽度
+			    baseFont    : 20,//基础字体
+			    border      : 0,//1不处理border，0处理
+			    ie8         : 0,//1生成ie8代码，0不生成
+			    media       : 1,//1生成meadia query代码，0不生成
+			    dest        : 'test/assets/css/media/'//rem css输出目录
+		    },
+		    files: [{
+			    src : ['test/assets/css/media/*.css']//要监听的css目录
+		    }]
+	    },
+	    rem2px: {
+		    options: {
+			    designWidth : 640,//设计稿宽度
+			    baseFont    : 20,//基础字体
+			    border      : 0,//1不处理border，0处理
+			    ie8         : 0,//1生成ie8代码，0不生成
+			    mode        : 1,
+			    media       : 0,//1生成meadia query代码，0不生成
+			    dest        : 'test/assets/css/rem2px/'//rem css输出目录
+		    },
+		    files: [{
+			    src : ['test/assets/css/rem2px/*.css']//要监听的css目录
+		    }]
+	    }
     },
 
     watch: {
@@ -71,7 +126,14 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'px2rem', 'nodeunit']);
+  grunt.registerTask('test',
+	  ['clean',
+	    'px2rem:default',
+	    'px2rem:border',
+	    'px2rem:ie8',
+		  'px2rem:rem2px',
+		  'px2rem:media',
+	  'nodeunit']);
 
 
   // By default, lint and run all tests.

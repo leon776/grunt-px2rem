@@ -1,0 +1,6 @@
+.test{width: 5px;height: 2px;}
+.test-shorthand{padding:20px 10px 30px 20px;}
+.test-border{border:1px solid #fff;border-radius:5px;}
+.test-other-unit{width:100%;padding:1px 1rem 1px 1%;}
+.test-single-line{width: 5px;height: 2px;}.test-single-line{padding:20px 10px 30px 20px;}
+.test-no-semicolon{width:1px}

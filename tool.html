@@ -204,7 +204,7 @@
 			base = $$('baseFont').value;
 			baseWidth = $$('baseWidth').value;
 			var after = '', tmp = [], 
-				reg = new RegExp(":[^:]*px\.*;","g"), 
+				reg = new RegExp(":[^:]*px([^;])*;","g"),
 				before = _addSemicolon($$('before').value);
 				//.replace(/\s/g,'')
 			var pxArray = before.match(reg);
@@ -222,29 +222,23 @@
 				}
 				after += getRem(pxArray[i], base);
 				before = before.replace(tmp[0], '').replace(pxArray[i], '');
-			};
+			}
 			$$('after').value = after + before;
 			createMedia();
 		}
 		//末尾自动添加分号
 		function _addSemicolon (str) {
-			/*
-			var reg = new RegExp("px[^;{}]*}","g");
-			var tmp = str.match(reg);
-			console.log(tmp);
-			tmp = str.replace(/px[^;{}]*}/g,'px;\n}')
-			console.log(tmp);
-			*/
-			return str.replace(/px[^;{}]*}/g,'px;\n}');
+			return str.replace(/px[^;{}]?}/g,'px;\n}');
 		}
 		function _filterBorder(str) {
-			if(str.substr(-6) === 'border' 
+			if(str.substr(-6) === 'border'
 				|| str.substr(-12) === 'border-width'
 				|| str.substr(-10) === 'border-top'
 				|| str.substr(-11) === 'border-left'
 				|| str.substr(-12) === 'border-right'
 				|| str.substr(-13) === 'border-bottom'
-				) {
+				|| str.substr(-13) === 'border-radius'
+			) {
 				return true;
 			}
 			return false;
@@ -263,17 +257,15 @@
 		}
 		//获取rem值
 		function getRem(px, base) {
+			console.log(base);
 			var reg = new RegExp("[0-9]+([.]{1}[0-9]+){0,1}","g"), rem = px;
 			var tmp = px.match(reg);
 			for (var i = 0; i < tmp.length; i++) {
-				if(Number(tmp[i]) === 0 || px.substr( px.indexOf( tmp[i] ) + tmp[i].length, 2 ) !== 'px') {
+				if(Number(tmp[i]) === 0 || px.indexOf( tmp[i] + 'px' ) < 0) {
 					continue;//0不做处理,数字后面不是px不做处理
 				}
 				rem = rem.replace(tmp[i] + 'px', (Number(tmp[i]) / base) + 'rem');
-				//console.log(tmp[i] + 'px')
-				//console.log((Number(tmp[i]) / base))
-				//console.log(rem)
-			};
+			}
 			return rem;
 		}
 		//获取px值

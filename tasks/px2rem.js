@@ -26,7 +26,7 @@ var RemTransform = function(option) {
 		return tmp;
 	}
 	//获取rem值
-	function _getRem(px, base) {
+	function _getRem(px) {
 		var reg = new RegExp("[0-9]+([.]{1}[0-9]+){0,1}","g"), rem = px;
 		var tmp = px.match(reg);
 		for (var i = 0; i < tmp.length; i++) {
@@ -38,7 +38,7 @@ var RemTransform = function(option) {
 		return rem;
 	}
 	//获取px值
-	function _getPx(rem, base) {
+	function _getPx(rem) {
 		var reg = new RegExp("[0-9]+([.][0-9]+)?","g"), px = rem;
 		var tmp = rem.match(reg);
 		for (var i = 0; i < tmp.length; i++) {
@@ -51,8 +51,6 @@ var RemTransform = function(option) {
 		return str.replace(/px[^;{}]?}/g,'px;\n}');
 	}
 	function _filterBorder(str) {
-		console.log(str)
-		console.log('=================')
 		if(str.substr(-6) === 'border'
 			|| str.substr(-12) === 'border-width'
 			|| str.substr(-10) === 'border-top'

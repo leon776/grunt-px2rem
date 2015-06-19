@@ -109,7 +109,7 @@ module.exports = function(grunt) {
     },
 
     // Unit tests.
-		nodeunit: {
+	nodeunit: {
       tests: ['test/test*.js']
     }
 

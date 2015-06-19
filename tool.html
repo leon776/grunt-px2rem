@@ -257,7 +257,6 @@
 		}
 		//获取rem值
 		function getRem(px, base) {
-			console.log(base);
 			var reg = new RegExp("[0-9]+([.]{1}[0-9]+){0,1}","g"), rem = px;
 			var tmp = px.match(reg);
 			for (var i = 0; i < tmp.length; i++) {

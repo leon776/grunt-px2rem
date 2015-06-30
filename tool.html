@@ -15,6 +15,9 @@
 			width: 532px;
 			height: 500px;
 		}
+		h2{
+			text-align: center;
+		}
 		.box{
 			width: 534px;
 			float: left;
@@ -28,7 +31,7 @@
 		.btn-group{
 			position: absolute;
 			width: 100px;
-			top: 100px;
+			top: 260px;
 			left: 50%;
 			margin-left: -50px;
 			text-align: center;
@@ -204,7 +207,7 @@
 			base = $$('baseFont').value;
 			baseWidth = $$('baseWidth').value;
 			var after = '', tmp = [], 
-				reg = new RegExp(":[^:]*px([^;])*;","g"),
+				reg = new RegExp(":[^:]*px([^;/])*;","g"),
 				before = _addSemicolon($$('before').value);
 				//.replace(/\s/g,'')
 			var pxArray = before.match(reg);

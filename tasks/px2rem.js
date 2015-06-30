@@ -66,7 +66,7 @@ var RemTransform = function(option) {
 	//将px转换成rem
 	function changeToRem (input) {
 		var after = '', tmp = [],
-			reg = new RegExp(":[^:]*px([^;])*;","g"),
+			reg = new RegExp(":[^:]*px([^;/])*;","g"),
 			before = _addSemicolon(input);
 		var pxArray = before.match(reg);
 		if(!pxArray) { return; }

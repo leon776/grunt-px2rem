@@ -5,3 +5,4 @@
 .test-single-line{width: 0.25rem;height: 0.1rem;}.test-single-line{padding:1rem 0.5rem 1.5rem 1rem;}
 .test-no-semicolon{width:0.05rem;
 }
+.test-no-trans{font-size:12px/*except*/;}

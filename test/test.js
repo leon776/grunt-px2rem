@@ -18,7 +18,7 @@ exports.test = {
 	base: function (test) {
 		test.expect(1);
 		var actual = grunt.file.read('test/assets/css/base/base-rem.css');
-		var expected = '.test{width: 0.25rem;height: 0.1rem;}\n.test-shorthand{padding:1rem 0.5rem 1.5rem 1rem;}\n.test-border{border:0.05rem solid #fff;border-radius:0.25rem;}\n.test-other-unit{width:100%;padding:0.05rem 1rem 0.05rem 1%;}\n.test-single-line{width: 0.25rem;height: 0.1rem;}.test-single-line{padding:1rem 0.5rem 1.5rem 1rem;}\n.test-no-semicolon{width:0.05rem;\n}';
+		var expected = '.test{width: 0.25rem;height: 0.1rem;}\n.test-shorthand{padding:1rem 0.5rem 1.5rem 1rem;}\n.test-border{border:0.05rem solid #fff;border-radius:0.25rem;}\n.test-other-unit{width:100%;padding:0.05rem 1rem 0.05rem 1%;}\n.test-single-line{width: 0.25rem;height: 0.1rem;}.test-single-line{padding:1rem 0.5rem 1.5rem 1rem;}\n.test-no-semicolon{width:0.05rem;\n}\n.test-no-trans{font-size:12px/*notrans*/;}';
 		test.equal(actual, expected, 'default test.');
 		test.done();
 	},

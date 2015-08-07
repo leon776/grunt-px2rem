@@ -48,7 +48,8 @@ var RemTransform = function(option) {
 	}
 	//末尾自动添加分号
 	function _addSemicolon (str) {
-		return str.replace(/px[^;{}]?}/g,'px;\n}');
+		var reg = new RegExp(/([0-9]+)([^;{}])?}/g);
+		return str.replace(reg, "$1$2;}");
 	}
 	function _filterBorder(str) {
 		if(str.substr(-6) === 'border'

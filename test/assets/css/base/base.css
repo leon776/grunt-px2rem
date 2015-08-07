@@ -5,3 +5,4 @@
 .test-single-line{width: 5px;height: 2px;}.test-single-line{padding:20px 10px 30px 20px;}
 .test-no-semicolon{width:1px}
 .test-no-trans{font-size:12px/*except*/;}
+.test-laststr-is-zero{border-width:1px 10px -10.1px 0}

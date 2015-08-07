@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>px转rem</title>
+    <meta name="description" content="px转rem" />
+    <meta name="author" content="xiaoweili" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css">
+    <style type="text/css">
+    body{font-family:"\5FAE\8F6F\96C5\9ED1",Helvetica;}
+    	ul{
+    		list-style: none;
+    	}
+		textarea{
+			width: 532px;
+			height: 500px;
+		}
+		h2{
+			text-align: center;
+		}
+		.box{
+			width: 534px;
+			float: left;
+		}
+		.before{
+			
+		}
+		.after{
+			margin-left: 200px;
+		}
+		.btn-group{
+			position: absolute;
+			width: 100px;
+			top: 260px;
+			left: 50%;
+			margin-left: -50px;
+			text-align: center;
+		}
+		.warp{
+			position: relative;
+			margin: 0 auto;
+			width: 1280px;
+		}
+		.btn{
+			display: block;
+			border-radius: 3px;
+			text-decoration: none;
+			height: 30px;
+			line-height: 30px;
+			opacity: 0.9;
+		}
+		.btn:hover{
+			opacity: 0.7;
+		}
+		.btn:active{
+			opacity: 1;
+		}
+		.info{
+			float: right;
+			margin: 20px 0;
+		}
+		.form{overflow: hidden;}
+		.select-screen{overflow: hidden;}
+		.select-screen ul{overflow: hidden;padding: 0;margin: 0;}
+		.select-screen li{ float: left;}
+		.fl{
+			float: left;
+		}
+		.fr{
+			float: right;
+		}
+		li label{
+			padding: 4px 4px;
+			cursor: pointer;
+			-webkit-user-select:none;
+		}
+    </style>
+</head>
+<body>
+	<div class="warp">
+		<div class="form">
+		<div class="before box">
+			<h2>转换前的代码</h2>
+			<textarea name="" id="before"></textarea>
+			<div class="select-screen">
+				<div class="control-group fl">
+	              <label class="control-label" for="baseWidth"><i class="icon-picture"></i>设计稿宽度</label>
+	              <div class="controls">
+	                <input type="number" id="baseWidth" value="640" style="width:;">
+	              </div>
+	            </div>
+				<div class="control-group fr">
+	              <label class="control-label" for="baseFont"><i class="icon-font"></i>基础字体值</label>
+	              <div class="controls">
+	                <input type="number" id="baseFont" placeholder="基础字体值" value="20">
+	              </div>
+	            </div>
+	            
+			</div>
+			<div class="select-screen">
+				<p><label class="checkbox"><input type="checkbox" name="media" id="mediaCheck" value="1" checked><span class="">自动生成media，要兼容的分辨率：</span></label></p>
+				<ul>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="1080" checked><span class="label label-important">1080</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="960" checked><span class="label label-important">960</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="800" checked><span class="label label-important">800</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="720" checked><span class="label label-important">720</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="640" checked><span class="label label-important">640</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="600" checked><span class="label label-important">600</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="540" checked><span class="label label-important">540</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="480" checked><span class="label label-important">480</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="414" checked><span class="label label-important">414</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="400" checked><span class="label label-important">400</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="375" checked><span class="label label-important">375</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="360" checked><span class="label label-important">360</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="320" checked><span class="label label-important">320</span></label></li>
+					<li><label class="checkbox"><input type="checkbox" name="screen" value="240" checked><span class="label label-important">240</span></label></li>
+				</ul>
+			</div>
+			<div class="select-screen">
+				<p><label class="checkbox"><input type="checkbox" name="ie8" value="1080" id="ie8Code">是否要兼容IE8-</label></p>
+			</div>
+			<div class="select-screen">
+				<p><label class="checkbox"><input type="checkbox" name="borderFilter" value="1" id="borderFilter" checked>不处理border</label></p>
+			</div>
+
+		</div>
+		<div class="btn-group">
+			<p><a href="javascript:" onclick="changeToRem()" class="btn btn-primary">px转rem</a></p>
+			<p><a href="javascript:" onclick="changeToPx()" class="btn btn-inverse">rem转px</a></p>
+		</div>
+		<div class="after box">
+			<h2>转换后的代码</h2>
+			<textarea name="" id="after"></textarea>
+		</div>
+		</div>
+		<div class="info">
+			<p><i class="icon-edit"></i> 更新日志：</p>
+			<ul>
+				<li>2014-10-29:添加px转换rem功能</li>
+				<li>2014-10-30:添加生成兼容ie8-代码功能</li>
+				<li>2014-10-30:添加rem转换px功能</li>
+				<li>2014-11-07:添加自动生成media代码</li>
+				<li>2014-12-01:添加用户可选是否生产ie8代码功能</li>
+				<li>2014-12-01:用Bootstrp美化，希望大家在使用的时候有个好心情</li>
+				<li>2014-12-10:添加不再处理border功能</li>
+			</ul>
+		</div>
+	</div>
+	<script type="tepl" id="media">
+		@media only screen and (max-width: <%=screenWidth%>px), only screen and (max-device-width:<%=screenWidth%>px) {\n
+		  html,body {\n
+		      font-size:<%=fontSize%>px;\n
+		  }\n
+		}\n
+	</script>
+	<script type="text/javascript">
+		var cache = {};
+		function $$ (id) {return document.getElementById(id) || null;}
+		//解析模板
+		function tmpl(str, data) {
+	    // Figure out if we're getting a template, or if we need to
+	    // load the template - and be sure to cache the result.
+		    var fn = !/\W/.test(str) ?
+		      cache[str] = cache[str] ||
+		        tmpl(document.getElementById(str).innerHTML) : 
+		      // Generate a reusable function that will serve as a template
+		      // generator (and which will be cached).
+		      new Function("obj",
+		        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+		       
+		        // Introduce the data as local variables using with(){}
+		        "with(obj){p.push('" +
+		       
+		        // Convert the template into pure JavaScript
+		        str
+		          .replace(/[\r\t\n]/g, " ")
+		          .split("<%").join("\t")
+		          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+		          .replace(/\t=(.*?)%>/g, "',$1,'")
+		          .split("\t").join("');")
+		          .split("%>").join("p.push('")
+		          .split("\r").join("\\'")
+		      + "');}return p.join('');");
+		    // Provide some basic currying to the user
+		    return data ? fn( data ) : fn;
+		}
+		var base = $$('baseFont').value;
+		var baseWidth = $$('baseWidth').value;
+		//自动添加cssmedai
+		function createMedia() {
+			var tmp = '';
+			var tpl = tmpl($$('media').innerHTML);
+			var screens = document.getElementsByName('screen');
+			for (var i = 0; i < screens.length; i++) {
+				if(!screens[i].checked) {
+					continue;
+				}
+				tmp += tpl({
+					screenWidth:screens[i].value,
+					fontSize:(screens[i].value/baseWidth)*base
+				});
+			};
+			$$('after').value = tmp + $$('after').value;
+		}
+		//将px转换成rem
+		function changeToRem () {
+			base = $$('baseFont').value;
+			baseWidth = $$('baseWidth').value;
+			var after = '', tmp = [], 
+				reg = new RegExp(":[^:]*px([^;/])*;","g"),
+				before = _addSemicolon($$('before').value);
+				//.replace(/\s/g,'')
+			var pxArray = before.match(reg);
+			if(!pxArray) { return; }
+
+			for (var i = 0; i < pxArray.length; i++) {
+				tmp = before.split(pxArray[i]);
+				if($$('borderFilter').checked && _filterBorder(tmp[0])) {
+					continue;
+				}
+				after += tmp[0];
+				if($$('ie8Code').checked) {
+					after += pxArray[i];
+					after += tmp[0].substr(Math.max( tmp[0].lastIndexOf(';'), tmp[0].lastIndexOf('{') ) + 1);
+				}
+				after += getRem(pxArray[i], base);
+				before = before.replace(tmp[0], '').replace(pxArray[i], '');
+			}
+			$$('after').value = after + before;
+			createMedia();
+		}
+		//末尾自动添加分号
+		function _addSemicolon (str) {
+			var reg = new RegExp(/([0-9]+)([^;{}])?}/g);
+			return str.replace(reg, "$1$2;}");
+		}
+		function _filterBorder(str) {
+			if(str.substr(-6) === 'border'
+				|| str.substr(-12) === 'border-width'
+				|| str.substr(-10) === 'border-top'
+				|| str.substr(-11) === 'border-left'
+				|| str.substr(-12) === 'border-right'
+				|| str.substr(-13) === 'border-bottom'
+				|| str.substr(-13) === 'border-radius'
+			) {
+				return true;
+			}
+			return false;
+		}
+		//rem转px
+		function changeToPx () {
+			var after = '', tmp = [], reg = new RegExp(":.*rem","g"), before = $$('before').value;
+			var pxArray = before.match(reg);
+			if(!pxArray) { return; }
+			for (var i = 0; i < pxArray.length; i++) {
+				tmp = before.split(pxArray[i]);
+				after += tmp[0]  + getPx(pxArray[i], base);
+				before = before.replace(tmp[0], '').replace(pxArray[i], '');
+			};
+			$$('after').value = after + before;
+		}
+		//获取rem值
+		function getRem(px, base) {
+			var reg = new RegExp("[0-9]+([.]{1}[0-9]+){0,1}","g"), rem = px;
+			var tmp = px.match(reg);
+			for (var i = 0; i < tmp.length; i++) {
+				if(Number(tmp[i]) === 0 || px.indexOf( tmp[i] + 'px' ) < 0) {
+					continue;//0不做处理,数字后面不是px不做处理
+				}
+				rem = rem.replace(tmp[i] + 'px', (Number(tmp[i]) / base) + 'rem');
+			}
+			return rem;
+		}
+		//获取px值
+		function getPx(rem, base) {
+			var reg = new RegExp("[0-9]+([.][0-9]+)?","g"), px = rem;
+			var tmp = rem.match(reg);
+			for (var i = 0; i < tmp.length; i++) {
+				px = px.replace(tmp[i] + 'rem', (Number(tmp[i]) * base) + 'px');
+			};
+			return px;
+		}
+		$$('mediaCheck').addEventListener('click', function() {
+			var screens = document.getElementsByName('screen');
+			if(this.checked) {
+				_changeChecked(true);
+			} else {
+				_changeChecked(false);
+			}
+			function _changeChecked(op) {
+				for (var i = 0; i < screens.length; i++) {
+					screens[i].checked = op;
+				};
+			}
+		});
+	</script>
+</body>
+</html>
